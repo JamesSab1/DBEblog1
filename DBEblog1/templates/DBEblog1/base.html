@@ -1,0 +1,87 @@
+{% load DBEblog1_tags %}
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <link href="{% static 'css/DBEblog1.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="content">
+
+  <div id="header"> 
+    <div id="title"> 
+      <h1>Learning Linux</h1>
+    </div>
+    <!<img src="images/bg/header_left.jpg" style="margin-left: 10%;"/></div>
+
+  <div id="mainMenu">
+    <ul class="floatLeft">
+      <li><a href="" class="here">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Search</a></li>
+      <li><a href="">RSS</a></li>
+      <li><a href="">Sitemap</a></li>
+      <li><a href="" class="last">Archive</a></li>
+    </ul>
+  </div>
+
+  <div id="page">
+
+    <div class="width25 floatRight leftColumn">
+
+      
+        <div id="sidebar">
+    <h2>Learning Linux</h2>
+    <p>This is my blog about learning to use a computer. Be gentle. I've written {% total_posts %} posts so far.</p>
+    <p><a href="{% url 'DBEblog1:post_feed' %}">Subscribe to my RSS feed</a></p>
+    <h3>Latest posts</h3>
+    {% show_latest_posts 5 %}
+    
+    <h3>Most commented posts</h3>
+    {% get_most_commented_posts as most_commented_posts %}
+    <ul>
+    {% for post in most_commented_posts %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+    
+    
+  </div>
+
+      <p align="right">
+<a href="">Read more...</a>
+      </p>
+
+    </div>
+
+    <div class="width75 floatLeft">
+      <div class="gradient">
+
+        <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+    </div>
+
+  </div>
+
+</div>
+<div id="footer">
+
+  <div id="width"> <span class="floatLeft"> Copyright © 2018 </span> <span class="floatRight"> 
+    <a href="">home</a> <span class="grey">|</span> <a href="">about us</a> <span class="grey">|</span> 
+    <a href="">news</a> <span class="grey">|</span> <a href="">contact</a> <span class="grey">|</span> 
+    <a href="">links</a> </span> </div>
+
+</div>
+
+
+</html>
