@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'w&h^#%*6x*y5l*c2ae*lf2c-q&oki-r4x#-+5msd2vtdv3$1m%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'DBEblog1.context_processors.posts',
             ],
         },
     },
@@ -126,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-#Email settings
+# Email settings
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'jamessab71@gmail.com'
@@ -135,12 +136,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-#search engine backends for haystack
+# search engine backends for haystack
 
 HAYSTACK_CONNECTIONS = {
-'default': {
-'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-'URL': 'http://127.0.0.1:8983/solr/DBEblog1'
-},
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr/DBEblog1'
+    },
 }
-
